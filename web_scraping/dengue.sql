@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 19, 2014 at 12:50 AM
+-- Generation Time: Jun 19, 2014 at 08:00 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `dengue`
 --
+CREATE DATABASE IF NOT EXISTS `dengue` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `dengue`;
 
 -- --------------------------------------------------------
 
@@ -33,6 +35,19 @@ CREATE TABLE IF NOT EXISTS `daily` (
   `risk_area_count` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `state`
+--
+
+CREATE TABLE IF NOT EXISTS `state` (
+`id` int(11) NOT NULL,
+  `state` varchar(155) NOT NULL,
+  `area` varchar(155) NOT NULL,
+  `local_area` varchar(155) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+
 --
 -- Indexes for dumped tables
 --
@@ -44,6 +59,12 @@ ALTER TABLE `daily`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `state`
+--
+ALTER TABLE `state`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -52,6 +73,11 @@ ALTER TABLE `daily`
 --
 ALTER TABLE `daily`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `state`
+--
+ALTER TABLE `state`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
