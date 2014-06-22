@@ -18,17 +18,27 @@ $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $u
 //$db->exec("TRUNCATE TABLE state");
 
 $url = "http://idengue.remotesensing.gov.my/idengue/lokaliti_wabakB.php";
-$postdata = array (
-    "negeri" => "JOHOR",
+$negeri = array('JOHOR','KEDAH','KELANTAN','MELAKA','NEGERI SEMBILAN','PAHANG','PERAK','PERLIS',
+'PULAU PINANG','SABAH','SARAWAK','SELANGOR','TERENGGANU','WP KUALA LUMPUR','WP PUTRAJAYA','WP LABUAN');
+/*$postdata = array (
+    "negeri" => "WP PUTRAJAYA",
     "preview_button" => "Papar"
-);
+);*/
 
 $req = curl_init($url);
 curl_setopt($req, CURLOPT_POST, true);
-curl_setopt($req, CURLOPT_POSTFIELDS, $postdata);
+//curl_setopt($req, CURLOPT_POSTFIELDS, $postdata);
+foreach($negeri as $dtaNegeri){
+curl_setopt($req, CURLOPT_POSTFIELDS, array("negeri" => $dtaNegeri, "preview_button" => "Papar"));
 curl_setopt($req, CURLOPT_RETURNTRANSFER, true);
 $data = curl_exec($req);
 $html = str_get_html($data);
+//first check on no data. got exact match then skip for next state
+//var_dump($html->find('script', 0)->innertext);
+if(strlen($html->find('script', 0)->innertext) == 41){
+	print "State Dengue information for $dtaNegeri is skipped (no data). <br />";
+	continue;
+}
 foreach($html->find('table[id=contentpaneopen]') as $tbl){
 	foreach($tbl->find('td') as $td){
 		$aryData[] = $td->innertext;
@@ -44,5 +54,7 @@ $stmt = $db->prepare("INSERT INTO state(state, area, local_area) VALUES(:state,:
         $ex->getMessage();
     }
 }
-
-print "State Dengue information copied successfully.";
+unset($aryData);
+unset($aryChnk4);
+print "State Dengue information for $dtaNegeri copied successfully. <br />";
+	}
