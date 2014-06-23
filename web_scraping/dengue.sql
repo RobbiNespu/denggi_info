@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2014 at 07:10 AM
+-- Generation Time: Jun 23, 2014 at 11:18 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 
 CREATE TABLE IF NOT EXISTS `daily` (
 `id` int(11) NOT NULL,
-  `state` varchar(150) NOT NULL,
-  `case_count` int(11) NOT NULL,
-  `risk_area_count` int(11) NOT NULL
+  `negeri` varchar(150) NOT NULL,
+  `jumlah_kes` int(11) NOT NULL,
+  `kawasan_berisiko` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
@@ -163,9 +163,9 @@ CREATE TABLE IF NOT EXISTS `django_session` (
 
 CREATE TABLE IF NOT EXISTS `harian_daily` (
 `id` int(11) NOT NULL,
-  `state` varchar(150) NOT NULL,
-  `case_count` int(11) NOT NULL,
-  `risk_area_count` int(11) NOT NULL
+  `negeri` varchar(150) NOT NULL,
+  `jumlah_kes` int(11) NOT NULL,
+  `kawasan_berisiko` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
@@ -176,9 +176,9 @@ CREATE TABLE IF NOT EXISTS `harian_daily` (
 
 CREATE TABLE IF NOT EXISTS `negeri_state` (
 `id` int(11) NOT NULL,
-  `state` varchar(155) NOT NULL,
-  `area` varchar(155) NOT NULL,
-  `local_area` varchar(155) NOT NULL
+  `negeri` varchar(155) NOT NULL,
+  `daerah` varchar(155) NOT NULL,
+  `lokaliti` varchar(155) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=524 ;
 
 -- --------------------------------------------------------
@@ -189,10 +189,10 @@ CREATE TABLE IF NOT EXISTS `negeri_state` (
 
 CREATE TABLE IF NOT EXISTS `state` (
 `id` int(11) NOT NULL,
-  `state` varchar(155) NOT NULL,
-  `area` varchar(155) NOT NULL,
-  `local_area` varchar(155) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=524 ;
+  `negeri` varchar(155) NOT NULL,
+  `daerah` varchar(155) NOT NULL,
+  `lokaliti` varchar(155) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=582 ;
 
 --
 -- Indexes for dumped tables
@@ -339,7 +339,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=524;
 -- AUTO_INCREMENT for table `state`
 --
 ALTER TABLE `state`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=524;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=582;
 --
 -- Constraints for dumped tables
 --
