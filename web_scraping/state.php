@@ -47,7 +47,7 @@ foreach($html->find('table[id=contentpaneopen]') as $tbl){
 $aryChnk4 = array_chunk($aryData, 4);
 //echo '<pre>';print_r($aryChnk4);echo '</pre>';
 foreach($aryChnk4 as $dt){
-$stmt = $db->prepare("INSERT INTO state(negeri, daerah, lokaliti) VALUES(:state,:area,:local_area)");
+$stmt = $db->prepare("INSERT INTO negeri_state(negeri, daerah, lokaliti) VALUES(:state,:area,:local_area)");
     try {
         $stmt->execute(array(':state' => trim(strip_tags($dt[1])), ':area' => $dt[2], ':local_area' => $dt[3]));
     } catch (PDOException $ex) {

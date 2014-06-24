@@ -26,7 +26,7 @@ foreach ($html->find('div table[width=350]') as $tbl) {
 
 $aryChunk3 = array_chunk($aryData, 3);
 foreach ($aryChunk3 as $ste) {
-    $stmt = $db->prepare("INSERT INTO daily(negeri, jumlah_kes, kawasan_berisiko) VALUES(:state,:case_count,:risk_area_count)");
+    $stmt = $db->prepare("INSERT INTO harian_daily(negeri, jumlah_kes, kawasan_berisiko) VALUES(:state,:case_count,:risk_area_count)");
     try {
         $stmt->execute(array(':state' => trim(strip_tags($ste[0])), ':case_count' => $ste[1], ':risk_area_count' => $ste[2]));
     } catch (PDOException $ex) {
