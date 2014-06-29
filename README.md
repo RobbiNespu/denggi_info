@@ -5,6 +5,13 @@ Denggi Info is a REST web service serving Malaysia's dengue information taken fr
 
 The web application provide HTTP API which return JSON data.
 
+The project consist of two part:
+- Web scraping script developed in PHP
+- HTTP API to output JSON data
+
+TODO:
+- Implement web scraping script in Python and Django
+
 ## How it work
 
 **Request for state data**
