@@ -10,5 +10,5 @@ urlpatterns = patterns('',
 
 	url(r'^harian/', include('harian.urls')),
 	url(r'^negeri/', include('negeri.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^admin/', include(admin.site.urls)),
 )
